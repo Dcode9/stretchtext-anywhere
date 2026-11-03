@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Stretchtext Anywhere",
+  "name": "Deepen - stretchtext for any page",
   "version": "0.1.0",
   "description": "Turns any web page into stretchtext: click a sentence to grow it, click again to shrink it. Expansions are generated with your own Pollinations key (BYOP).",
   "permissions": [
