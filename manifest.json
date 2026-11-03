@@ -19,5 +19,8 @@
   "action": {
     "default_popup": "popup/popup.html",
     "default_title": "Stretchtext Anywhere"
-  }
+  },
+  "optional_host_permissions": [
+    "<all_urls>"
+  ]
 }
