@@ -64,6 +64,9 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
                 await chrome.storage.local.set({ enabledSites });
                 const id = "stx-" + msg.host;
                 if (msg.enabled) {
+                    // Fail closed: never touch a page without the explicit per-site grant.
+                    const granted = await chrome.permissions.contains({ origins: [`*://${msg.host}/*`] }).catch(() => false);
+                    if (!granted) return { ok: false, error: "no_site_permission" };
                     await chrome.scripting.registerContentScripts([{
                         id,
                         matches: [`*://${msg.host}/*`],
