@@ -1,0 +1,17 @@
+.stx-on .stx-sentence {
+    border-bottom: 1px dotted rgba(120, 120, 120, 0.55);
+    cursor: pointer;
+    transition: background 120ms ease;
+}
+.stx-on .stx-sentence:hover { background: rgba(97, 218, 251, 0.14); }
+.stx-on .stx-sentence.stx-grown { border-bottom-style: solid; }
+.stx-on .stx-sentence.stx-loading { opacity: 0.6; cursor: progress; }
+.stx-on .stx-sentence.stx-error { border-bottom-color: #d33; }
+.stx-on .stx-expansion {
+    display: inline;
+    font-size: 0.94em;
+    opacity: 0.88;
+    background: rgba(97, 218, 251, 0.10);
+    border-radius: 3px;
+    padding: 0 2px;
+}
