@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Stretchtext Anywhere",
+  "version": "0.1.0",
+  "description": "Turns any web page into stretchtext: click a sentence to grow it, click again to shrink it. Expansions are generated with your own Pollinations key (BYOP).",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": [
+    "https://gen.pollinations.ai/*",
+    "https://enter.pollinations.ai/*"
+  ],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Stretchtext Anywhere"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
