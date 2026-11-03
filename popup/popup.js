@@ -39,6 +39,15 @@ $("signoutBtn").addEventListener("click", async () => { await send({ type: "sign
 
 $("toggleSite").addEventListener("click", async () => {
     const { enabled } = await send({ type: "site:get", host });
+    if (!enabled) {
+        // Explicit per-site consent: Chrome asks before the extension may read this site.
+        const granted = await chrome.permissions.request({ origins: [`*://${host}/*`] }).catch(() => false);
+        if (!granted) {
+            $("permNote").textContent = "Site access declined - Deepen stays off on this site.";
+            return;
+        }
+        $("permNote").textContent = "";
+    }
     await send({ type: "site:set", host, enabled: !enabled, tabId });
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     if (tab?.id) chrome.tabs.sendMessage(tab.id, { type: "site:changed", host, enabled: !enabled }).catch(() => {});
