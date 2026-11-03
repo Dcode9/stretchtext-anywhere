@@ -6,11 +6,15 @@ Built for [Pollinations quest #17998](https://github.com/pollinations/pollinatio
 
 ## How it works
 
-- Enable the extension per site from the toolbar popup. Nothing touches a page until you turn it on there.
+- Enable the extension per site from the toolbar popup. The first time, Chrome asks you to grant access to that specific site (optional per-site permission); nothing touches a page you never enable.
 - Paragraphs on enabled pages split into clickable sentences (dotted underline).
 - Click a sentence: the extension asks Pollinations for a one-or-two-sentence elaboration in the original author's voice and inserts it inline, tinted and slightly smaller.
 - Click an expanded sentence again and it shrinks away. Expansions can themselves be stretched, up to the depth you set (default 3).
 - Repeated expansions are cached for the session, so re-reading costs nothing.
+
+## Privacy
+
+Pages are never read until you enable the site and approve Chrome's per-site access prompt; declining the prompt keeps the extension off for that site. When you click a sentence, that sentence and its surrounding paragraph are sent to the Pollinations text model you chose, billed to your own Pollen. Nothing else leaves the page; settings and your key stay in local extension storage.
 
 ## Sign-in (Bring Your Own Pollen)
 
