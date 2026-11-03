@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font: 13px/1.45 -apple-system, "Segoe UI", Roboto, sans-serif; width: 280px; margin: 0; padding: 14px; color: #1b1b1b; }
+  h1 { font-size: 14px; margin: 0 0 10px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 10px 0; }
+  button { padding: 6px 10px; border: 1px solid #c8c8c8; border-radius: 6px; background: #fff; cursor: pointer; font-size: 12px; }
+  button.primary { background: #111; color: #fff; border-color: #111; }
+  select { max-width: 170px; padding: 4px; font-size: 12px; }
+  .muted { color: #777; font-size: 11px; }
+  .code { font-family: ui-monospace, monospace; background: #f2f2f2; padding: 1px 5px; border-radius: 4px; }
+  #signinPanel, #mainPanel { display: none; }
+  a { color: #0a58ca; }
+</style>
+</head>
+<body>
+<h1>Stretchtext Anywhere</h1>
+
+<div id="signinPanel">
+  <p class="muted">Sign in with Pollinations so expansions are paid with your own Pollen.</p>
+  <div id="deviceStep" style="display:none">
+    <p>Open <a id="verifyLink" href="#" target="_blank">enter.pollinations.ai/device</a> and enter <span class="code" id="userCode"></span></p>
+    <p class="muted">Waiting for approval…</p>
+  </div>
+  <button id="signinBtn" class="primary">Sign in with Pollinations</button>
+</div>
+
+<div id="mainPanel">
+  <div class="row"><span id="siteHost"></span>
+    <button id="toggleSite" class="primary"></button>
+  </div>
+  <div class="row"><label for="model">Model</label><select id="model"></select></div>
+  <div class="row"><label for="depth">Max depth</label><select id="depth"><option>1</option><option>2</option><option selected>3</option></select></div>
+  <p class="muted">Click any sentence on an enabled page to grow it. Click again to shrink.</p>
+  <div class="row"><span></span><button id="signoutBtn">Sign out</button></div>
+</div>
+<script src="popup.js" type="module"></script>
+</body>
+</html>
