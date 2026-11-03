@@ -77,6 +77,7 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
                     }
                 } else {
                     await chrome.scripting.unregisterContentScripts({ ids: [id] }).catch(() => {});
+                    await chrome.permissions.remove({ origins: [`*://${msg.host}/*`] }).catch(() => {});
                 }
                 return { ok: true };
             }
