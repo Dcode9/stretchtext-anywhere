@@ -81,6 +81,7 @@
     }
 
     async function expand(span) {
+        if (span.classList.contains("stx-loading")) return; // re-entrancy guard: never two paid requests for one sentence
         const depth = Number(span.dataset.depth || 0);
         if (depth >= settings.maxDepth) return;
         const sentence = span.textContent;
@@ -119,8 +120,12 @@
 
     document.addEventListener("click", (e) => {
         if (!enabled) return;
+        // Only real user clicks may spend Pollen: ignore page-synthesized events.
+        if (!e.isTrusted) return;
         const span = e.target.closest?.(".stx-sentence");
         if (!span) return;
+        // One click, one request: ignore clicks while an expansion is in flight.
+        if (span.classList.contains("stx-loading")) return;
         e.preventDefault();
         e.stopPropagation();
         if (span.classList.contains("stx-grown")) collapse(span);
